@@ -1,0 +1,31 @@
+{
+  "name": "nosql_api",
+  "version": "1.0.0",
+  "description": "## Your Task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DougGouthro/The-Social-Network.git"
+  },
+  "keywords": [
+    "insomnia",
+    "backend",
+    "routes"
+  ],
+  "author": "Doug Gouthro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DougGouthro/The-Social-Network/issues"
+  },
+  "homepage": "https://github.com/DougGouthro/The-Social-Network#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
