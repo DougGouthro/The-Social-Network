@@ -1,26 +1,34 @@
 const { Schema, Types } = require('mongoose');
+const dayjs = require('dayjs');
 
-const assignmentSchema = new Schema(
+function formatDate(date){
+  return dayjs(date).format('DD/MM/YYYY HH:mm:SSSS') // '25/01/2019'
+}
+
+const reactionSchema = new Schema(
   {
-    assignmentId: {
+    reactionId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
     },
-    assignmentName: {
+    reactionbody: {
       type: String,
       required: true,
-      maxlength: 50,
-      minlength: 4,
-      default: 'Unnamed assignment',
+      maxlength: 280,
+      minlength: 1,
+      
     },
-    score: {
-      type: Number,
+    username: {
+      type: String,
       required: true,
-      default: () => Math.floor(Math.random() * (100 - 70 + 1) + 70),
+     
     },
     createdAt: {
       type: Date,
+      required: true,
       default: Date.now,
+      get: currentDate => formatDate(currentDate)
+     
     },
   },
   {
@@ -31,4 +39,4 @@ const assignmentSchema = new Schema(
   }
 );
 
-module.exports = assignmentSchema;
+module.exports = reactionSchema;

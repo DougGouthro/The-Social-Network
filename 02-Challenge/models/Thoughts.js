@@ -22,10 +22,10 @@ const thoughtSchema = new Schema(
       get: currentDate => formatDate(currentDate)
      
     },
-    github: {
+    username: {
       type: String,
       required: true,
-      max_length: 50,
+     
     },
     reactions: [reactionSchema],
   },
@@ -35,7 +35,9 @@ const thoughtSchema = new Schema(
     },
   }
 );
-
+thoughtSchema.virtual('reactioncount').get(function(){
+  return this.reactions.length
+})
 const Thought = model('thought', thoughtSchema);
 
 module.exports = Thought;
