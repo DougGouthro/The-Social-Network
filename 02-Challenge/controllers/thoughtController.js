@@ -77,15 +77,15 @@ module.exports = {
     }
   },
 
-  // Add an assignment to a thought
-  async addAssignment(req, res) {
-    console.log('You are adding an assignment');
+  // Add an reaction to a thought
+  async addReaction(req, res) {
+    console.log('You are adding an reaction');
     console.log(req.body);
 
     try {
       const thought = await Thougth.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $addToSet: { assignments: req.body } },
+        { $addToSet: { reactions: req.body } },
         { runValidators: true, new: true }
       );
 
@@ -100,12 +100,12 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Remove assignment from a thought
-  async removeAssignment(req, res) {
+  // Remove reaction from a thought
+  async removeReaction(req, res) {
     try {
       const thought = await Thougth.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { assignment: { assignmentId: req.params.assignmentId } } },
+        { $pull: { reactions: { reactionId: req.params.reactionId } } },
         { runValidators: true, new: true }
       );
 
